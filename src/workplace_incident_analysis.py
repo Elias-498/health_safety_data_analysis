@@ -1,17 +1,33 @@
-import pandas as pan
+import pandas as pd
 
 # Loads CSV file into pandas data frame
 def load_data(file_path):
   
-  return pan.read_csv(file_path)
+  if file_path is None:
+    print("File not found")
+    return None
+
+  return pd.read_csv(file_path)
 
 
-# Removes rows with missing "Incident_Type"
+# Strips spaces from columns and removes rows with missing "Incident Type"
 def clean_data(file):
-  print (file.columns)
-  #return file.dropna(subset=["Incident_Type"])
+
+  if file is None:
+    return None
+  
+  # strip spaces from columns
+  file.columns = file.columns.str.strip()
+
+  cleaned_file = file.dropna(subset=["Incident Type"])
+
+  return cleaned_file
+
 
 # Uses the cleaned data to count number of incidents per type
 def incident_count(file):
+
+  if file is None or "Incident Type" not in file.columns:
+    return None
   
-  return file["Incident_Type"]
+  return file["Incident Type"].value_counts()
