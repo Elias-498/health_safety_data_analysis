@@ -7,11 +7,11 @@ def load_data(file_path):
 
 
 # Removes rows with missing "Incident_Type"
-def clean_data(data):
-  
-  return data.dropna(subset=["Incident_Type"])
+def clean_data(file):
+  print (file.columns)
+  #return file.dropna(subset=["Incident_Type"])
 
 # Uses the cleaned data to count number of incidents per type
-def incident_count(data):
+def incident_count(file):
   
-  return data["Incident_Type"]
+  return file["Incident_Type"]
