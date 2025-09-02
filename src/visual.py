@@ -8,11 +8,12 @@ def incidents_plot(count):
     """
 
     sea.set(style="whitegrid")
-    plot.figure(figsize=(10,10))
-    sea.barplot(x=count.index, y=count.values, palette="magma")
+    plot.figure(figsize=(10,6))
+    sea.barplot(x=count.index, y=count.values, palette="plasma")
     
     plot.xlabel("Incident Type")
     plot.ylabel("Count")
     plot.title("Workplace incidents by type")
 
     plot.show()
+
